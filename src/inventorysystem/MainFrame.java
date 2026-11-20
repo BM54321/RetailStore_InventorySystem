@@ -35,7 +35,7 @@ public class MainFrame extends JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    //GEN-BEGIN:initComponents
     private void initComponents() {
         loginPanelbackground = new GradientPanel();
         loginCard = new SmoothEdges();
@@ -155,13 +155,15 @@ public class MainFrame extends JFrame {
                 .addComponent(loginPanelbackground, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE));
         setSize(new java.awt.Dimension(900, 600));
     }
-    // </editor-fold>
+    //GEN-END:initComponents
 
+    //GEN-BEGIN:variables
     private javax.swing.JLabel brandLabel, headingLabel, subtitleLabel, usernameLabel, passwordLabel, footerLabel;
     private javax.swing.JTextField usernameField;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginCard, loginPanelbackground;
+    //GEN-END:variables
 
     public static void main(String args[]) {
         try {
