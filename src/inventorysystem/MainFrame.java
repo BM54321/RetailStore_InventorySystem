@@ -15,27 +15,34 @@ public class MainFrame extends JFrame {
     private static final Color TEXT = new Color(35, 45, 60);
     private static final Color MUTED = new Color(120, 130, 145);
 
-    public MainFrame() {
+    public MainFrame()
+    {
         initComponents();
         setTitle("RSIS | Login");
         setLocationRelativeTo(null);
     }
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
         String username = usernameField.getText().trim();
         String password = new String(passwordField.getPassword());
-        if (username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter both your username and password.",
-                    "Missing Information", JOptionPane.WARNING_MESSAGE);
-            return;
+        if (username.equals("admin") && password.equals("admin123"))
+        {
+            DashboardFrame dashboard = new DashboardFrame();
+            dashboard.setVisible(true);
+            this.dispose();
+
         }
-        JOptionPane.showMessageDialog(this,
-                "The login interface is ready. Account authentication still needs to be connected.",
-                "Login", JOptionPane.INFORMATION_MESSAGE);
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Invalid username or password.");
+            passwordField.setText("");
+        }
+
     }
 
     @SuppressWarnings("unchecked")
-    //GEN-BEGIN:initComponents
+//GEN-BEGIN:initComponents
     private void initComponents() {
         loginPanelbackground = new GradientPanel();
         loginCard = new SmoothEdges();
@@ -155,15 +162,15 @@ public class MainFrame extends JFrame {
                 .addComponent(loginPanelbackground, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE));
         setSize(new java.awt.Dimension(900, 600));
     }
-    //GEN-END:initComponents
+//GEN-END:initComponents
 
-    //GEN-BEGIN:variables
+//GEN-BEGIN:variables
     private javax.swing.JLabel brandLabel, headingLabel, subtitleLabel, usernameLabel, passwordLabel, footerLabel;
     private javax.swing.JTextField usernameField;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginCard, loginPanelbackground;
-    //GEN-END:variables
+//GEN-END:variables
 
     public static void main(String args[]) {
         try {
