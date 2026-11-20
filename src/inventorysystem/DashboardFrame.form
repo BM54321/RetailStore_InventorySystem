@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -19,17 +20,107 @@
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
-
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="557" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="348" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+    <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="sidebarPanel">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="17" green="2b" blue="4d" type="rgb"/></Property>
+      </Properties>
+      <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="0" y="0" width="220" height="650"/></Constraint></Constraints>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="false"/>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="logoLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor"><Font name="Arial" size="26" style="1"/></Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="ff" green="ff" blue="ff" type="rgb"/></Property>
+            <Property name="text" type="java.lang.String" value="RSIS"/>
+          </Properties>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="25" y="25" width="170" height="45"/></Constraint></Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="dashboardButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="17" green="2b" blue="4d" type="rgb"/></Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="ff" green="ff" blue="ff" type="rgb"/></Property>
+            <Property name="text" type="java.lang.String" value="   Dashboard"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+          </Properties>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="20" y="105" width="180" height="45"/></Constraint></Constraints>
+        </Component>
+<Component class="javax.swing.JButton" name="productsButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="17" green="2b" blue="4d" type="rgb"/></Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="ff" green="ff" blue="ff" type="rgb"/></Property>
+            <Property name="text" type="java.lang.String" value="   Products"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+          </Properties>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="20" y="165" width="180" height="45"/></Constraint></Constraints>
+        </Component>
+<Component class="javax.swing.JButton" name="inventoryButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="17" green="2b" blue="4d" type="rgb"/></Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="ff" green="ff" blue="ff" type="rgb"/></Property>
+            <Property name="text" type="java.lang.String" value="   Inventory"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+          </Properties>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="20" y="225" width="180" height="45"/></Constraint></Constraints>
+        </Component>
+<Component class="javax.swing.JButton" name="salesButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="17" green="2b" blue="4d" type="rgb"/></Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="ff" green="ff" blue="ff" type="rgb"/></Property>
+            <Property name="text" type="java.lang.String" value="   Sales"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+          </Properties>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="20" y="285" width="180" height="45"/></Constraint></Constraints>
+        </Component>
+<Component class="javax.swing.JButton" name="transactionsButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="17" green="2b" blue="4d" type="rgb"/></Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="ff" green="ff" blue="ff" type="rgb"/></Property>
+            <Property name="text" type="java.lang.String" value="   Transactions"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+          </Properties>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="20" y="345" width="180" height="45"/></Constraint></Constraints>
+        </Component>
+<Component class="javax.swing.JButton" name="logoutButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="17" green="2b" blue="4d" type="rgb"/></Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="ff" green="ff" blue="ff" type="rgb"/></Property>
+            <Property name="text" type="java.lang.String" value="   Logout"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+          </Properties>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="20" y="555" width="180" height="45"/></Constraint></Constraints>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="contentPanel">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="f3" green="f5" blue="f9" type="rgb"/></Property>
+      </Properties>
+      <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="220" y="0" width="780" height="650"/></Constraint></Constraints>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="false"/>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="dashboardTitleLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor"><Font name="Arial" size="28" style="1"/></Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor"><Color red="17" green="2b" blue="4d" type="rgb"/></Property>
+            <Property name="text" type="java.lang.String" value="Dashboard"/>
+          </Properties>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription"><AbsoluteConstraints x="30" y="25" width="300" height="50"/></Constraint></Constraints>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>
