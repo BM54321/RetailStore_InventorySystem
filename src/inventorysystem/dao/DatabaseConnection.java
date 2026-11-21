@@ -15,7 +15,7 @@ import java.util.Properties;
  * project folder (see db.properties.example).
  */
 public class DatabaseConnection {
-    private static String url  = "jdbc:mysql://localhost:3306/inventory_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+    private static String url  = "jdbc:mysql://localhost:3306/retail_store_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private static String user = "root";
     private static String password = "";
 
