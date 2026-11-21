@@ -136,114 +136,114 @@ public class DashboardFrame extends javax.swing.JFrame {
 
         sidebarPanel.setBackground(new java.awt.Color(23, 43, 77));
         sidebarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         logoLabel.setText("<html>Retail Store<br>Management</html>");
-
         sidebarPanel.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 25, 170, 60));
+
         dashboardButton.setBackground(new java.awt.Color(23, 43, 77));
         dashboardButton.setForeground(new java.awt.Color(255, 255, 255));
         dashboardButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         dashboardButton.setText("   Dashboard");
-        dashboardButton.setHorizontalAlignment(2);
+        dashboardButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         dashboardButton.setBorderPainted(false);
         dashboardButton.setFocusPainted(false);
-
         sidebarPanel.add(dashboardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, 180, 42));
+
         productsButton.setBackground(new java.awt.Color(23, 43, 77));
         productsButton.setForeground(new java.awt.Color(255, 255, 255));
         productsButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         productsButton.setText("   Products");
-        productsButton.setHorizontalAlignment(2);
+        productsButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         productsButton.setBorderPainted(false);
         productsButton.setFocusPainted(false);
-
         sidebarPanel.add(productsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 157, 180, 42));
+
         categoriesButton.setBackground(new java.awt.Color(23, 43, 77));
         categoriesButton.setForeground(new java.awt.Color(255, 255, 255));
         categoriesButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         categoriesButton.setText("   Categories");
-        categoriesButton.setHorizontalAlignment(2);
+        categoriesButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         categoriesButton.setBorderPainted(false);
         categoriesButton.setFocusPainted(false);
-
         sidebarPanel.add(categoriesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 209, 180, 42));
+
         suppliersButton.setBackground(new java.awt.Color(23, 43, 77));
         suppliersButton.setForeground(new java.awt.Color(255, 255, 255));
         suppliersButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         suppliersButton.setText("   Suppliers");
-        suppliersButton.setHorizontalAlignment(2);
+        suppliersButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         suppliersButton.setBorderPainted(false);
         suppliersButton.setFocusPainted(false);
-
         sidebarPanel.add(suppliersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 261, 180, 42));
+
         customersButton.setBackground(new java.awt.Color(23, 43, 77));
         customersButton.setForeground(new java.awt.Color(255, 255, 255));
         customersButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         customersButton.setText("   Customers");
-        customersButton.setHorizontalAlignment(2);
+        customersButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         customersButton.setBorderPainted(false);
         customersButton.setFocusPainted(false);
-
         sidebarPanel.add(customersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 313, 180, 42));
+
         inventoryButton.setBackground(new java.awt.Color(23, 43, 77));
         inventoryButton.setForeground(new java.awt.Color(255, 255, 255));
         inventoryButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         inventoryButton.setText("   Inventory");
-        inventoryButton.setHorizontalAlignment(2);
+        inventoryButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         inventoryButton.setBorderPainted(false);
         inventoryButton.setFocusPainted(false);
-
         sidebarPanel.add(inventoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 365, 180, 42));
+
         salesButton.setBackground(new java.awt.Color(23, 43, 77));
         salesButton.setForeground(new java.awt.Color(255, 255, 255));
         salesButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         salesButton.setText("   Sales");
-        salesButton.setHorizontalAlignment(2);
+        salesButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         salesButton.setBorderPainted(false);
         salesButton.setFocusPainted(false);
-
         sidebarPanel.add(salesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 417, 180, 42));
+
         transactionsButton.setBackground(new java.awt.Color(23, 43, 77));
         transactionsButton.setForeground(new java.awt.Color(255, 255, 255));
         transactionsButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         transactionsButton.setText("   Transactions");
-        transactionsButton.setHorizontalAlignment(2);
+        transactionsButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         transactionsButton.setBorderPainted(false);
         transactionsButton.setFocusPainted(false);
-
         sidebarPanel.add(transactionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 469, 180, 42));
+
         reportsButton.setBackground(new java.awt.Color(23, 43, 77));
         reportsButton.setForeground(new java.awt.Color(255, 255, 255));
         reportsButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         reportsButton.setText("   Reports");
-        reportsButton.setHorizontalAlignment(2);
+        reportsButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         reportsButton.setBorderPainted(false);
         reportsButton.setFocusPainted(false);
-
         sidebarPanel.add(reportsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 521, 180, 42));
+
         logoutButton.setBackground(new java.awt.Color(23, 43, 77));
         logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         logoutButton.setText("   Logout");
-        logoutButton.setHorizontalAlignment(2);
+        logoutButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         logoutButton.setBorderPainted(false);
         logoutButton.setFocusPainted(false);
-
         sidebarPanel.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 650, 180, 42));
 
         getContentPane().add(sidebarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 720));
 
         contentPanel.setBackground(new java.awt.Color(243, 245, 249));
         contentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         dashboardTitleLabel.setForeground(new java.awt.Color(23, 43, 77));
         dashboardTitleLabel.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
         dashboardTitleLabel.setText("Dashboard");
-
         contentPanel.add(dashboardTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 22, 600, 44));
+
         cardHost.setOpaque(false);
         cardHost.setLayout(new java.awt.CardLayout());
-
         contentPanel.add(cardHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 900, 600));
 
         getContentPane().add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 960, 720));
