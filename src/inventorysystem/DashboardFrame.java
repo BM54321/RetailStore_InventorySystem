@@ -4,155 +4,42 @@ import inventorysystem.ui.DashboardPanel;
 import inventorysystem.ui.PlaceholderPanel;
 import inventorysystem.ui.Refreshable;
 import inventorysystem.ui.Theme;
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
+/**
+ * Main window: sidebar menu on the left, the selected screen on the right.
+ * The layout is built with the NetBeans GUI builder (Design tab).
+ * To add a screen: add a menu button in the designer, add it to buildMenu(),
+ * and add a case in createScreen().
+ */
 public class DashboardFrame extends javax.swing.JFrame {
 
     private static final Color NAVY = new Color(23, 43, 77);
-    private static final Color CONTENT_BG = new Color(243, 245, 249);
-
     private static final Color ACTIVE = Theme.TEAL;
 
-    private final CardLayout cards = new CardLayout();
-    private final JPanel cardHost = new JPanel(cards);
+    private CardLayout cards;
     private final Map<String, JButton> menu = new LinkedHashMap<>();
     private final Map<String, Component> screens = new LinkedHashMap<>();
-    private JButton categoriesButton;
-    private JButton suppliersButton;
-    private JButton customersButton;
-    private JButton reportsButton;
 
     public DashboardFrame() {
         initComponents();
         setTitle("RMS | Retail Store Management System");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        buildLayout();
-        setMinimumSize(new Dimension(1000, 620));
-        setSize(1200, 720);
         setLocationRelativeTo(null);
-        setResizable(true);
+        cards = (CardLayout) cardHost.getLayout();
+        buildMenu();
         showScreen("Dashboard");
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        sidebarPanel = new javax.swing.JPanel();
-        logoLabel = new javax.swing.JLabel();
-        dashboardButton = new javax.swing.JButton();
-        productsButton = new javax.swing.JButton();
-        inventoryButton = new javax.swing.JButton();
-        salesButton = new javax.swing.JButton();
-        transactionsButton = new javax.swing.JButton();
-        logoutButton = new javax.swing.JButton();
-        contentPanel = new javax.swing.JPanel();
-        dashboardTitleLabel = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        sidebarPanel.setBackground(new java.awt.Color(23, 43, 77));
-        sidebarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        logoLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        logoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        logoLabel.setText("<html>Inventory<br>Management</html>");
-        sidebarPanel.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 25, 170, 60));
-
-        dashboardButton.setBackground(new java.awt.Color(23, 43, 77));
-        dashboardButton.setForeground(new java.awt.Color(255, 255, 255));
-        dashboardButton.setText("   Dashboard");
-        dashboardButton.setBorderPainted(false);
-        dashboardButton.setFocusPainted(false);
-        sidebarPanel.add(dashboardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, 180, 45));
-
-        productsButton.setBackground(new java.awt.Color(23, 43, 77));
-        productsButton.setForeground(new java.awt.Color(255, 255, 255));
-        productsButton.setText("   Products");
-        productsButton.setFocusPainted(false);
-        productsButton.setBorderPainted(false);
-        sidebarPanel.add(productsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 165, 180, 45));
-
-        inventoryButton.setBackground(new java.awt.Color(23, 43, 77));
-        inventoryButton.setForeground(new java.awt.Color(255, 255, 255));
-        inventoryButton.setText("   Inventory");
-        inventoryButton.setFocusPainted(false);
-        inventoryButton.setBorderPainted(false);
-        sidebarPanel.add(inventoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 225, 180, 45));
-
-        salesButton.setBackground(new java.awt.Color(23, 43, 77));
-        salesButton.setForeground(new java.awt.Color(255, 255, 255));
-        salesButton.setText("   Sales");
-        salesButton.setFocusPainted(false);
-        salesButton.setBorderPainted(false);
-        sidebarPanel.add(salesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 285, 180, 45));
-
-        transactionsButton.setBackground(new java.awt.Color(23, 43, 77));
-        transactionsButton.setForeground(new java.awt.Color(255, 255, 255));
-        transactionsButton.setText("   Transactions");
-        transactionsButton.setFocusPainted(false);
-        transactionsButton.setBorderPainted(false);
-        sidebarPanel.add(transactionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 345, 180, 45));
-
-        logoutButton.setBackground(new java.awt.Color(23, 43, 77));
-        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
-        logoutButton.setText("   Logout");
-        logoutButton.setFocusPainted(false);
-        logoutButton.setBorderPainted(false);
-        sidebarPanel.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 555, 180, 45));
-
-        getContentPane().add(sidebarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 650));
-
-        contentPanel.setBackground(new java.awt.Color(243, 245, 249));
-        contentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        dashboardTitleLabel.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
-        dashboardTitleLabel.setForeground(new java.awt.Color(23, 43, 77));
-        dashboardTitleLabel.setText("Dashboard");
-        contentPanel.add(dashboardTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 25, 300, 50));
-
-        getContentPane().add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 780, 650));
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void styleMenuButton(JButton button, String text) {
-        button.setBackground(NAVY);
-        button.setForeground(Color.WHITE);
-        button.setFont(new java.awt.Font("Arial", 0, 15));
-        button.setHorizontalAlignment(SwingConstants.LEFT);
-        button.setText("   " + text);
-        button.setFocusPainted(false);
-        button.setBorderPainted(false);
-        button.setOpaque(true);
-    }
-
-    /**
-     * Rebuilds the window with a resizable layout (sidebar + screens).
-     * Done in code after initComponents() so the NetBeans designer code is untouched.
-     */
-    private void buildLayout() {
-        categoriesButton = new JButton();
-        suppliersButton = new JButton();
-        customersButton = new JButton();
-        reportsButton = new JButton();
-
+    /** Connects each sidebar button to its screen name. */
+    private void buildMenu() {
         menu.put("Dashboard", dashboardButton);
         menu.put("Products", productsButton);
         menu.put("Categories", categoriesButton);
@@ -163,50 +50,16 @@ public class DashboardFrame extends javax.swing.JFrame {
         menu.put("Transactions", transactionsButton);
         menu.put("Reports", reportsButton);
 
-        sidebarPanel.removeAll();
-        sidebarPanel.setLayout(new BoxLayout(sidebarPanel, BoxLayout.Y_AXIS));
-        sidebarPanel.setBorder(BorderFactory.createEmptyBorder(22, 16, 18, 16));
-        sidebarPanel.setPreferredSize(new Dimension(220, 0));
-
-        logoLabel.setText("<html>Retail Store<br>Management</html>");
-        logoLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        sidebarPanel.add(logoLabel);
-        sidebarPanel.add(javax.swing.Box.createVerticalStrut(24));
-
         for (Map.Entry<String, JButton> e : menu.entrySet()) {
             final String name = e.getKey();
             JButton b = e.getValue();
-            styleMenuButton(b, name);
-            sizeMenuButton(b);
+            b.setOpaque(true);
+            b.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
             b.addActionListener(evt -> showScreen(name));
-            sidebarPanel.add(b);
-            sidebarPanel.add(javax.swing.Box.createVerticalStrut(6));
         }
-
-        sidebarPanel.add(javax.swing.Box.createVerticalGlue());
-        styleMenuButton(logoutButton, "Logout");
-        sizeMenuButton(logoutButton);
+        logoutButton.setOpaque(true);
+        logoutButton.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
         logoutButton.addActionListener(evt -> logout());
-        sidebarPanel.add(logoutButton);
-
-        contentPanel.removeAll();
-        contentPanel.setLayout(new BorderLayout(0, 14));
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(22, 26, 22, 26));
-        contentPanel.add(dashboardTitleLabel, BorderLayout.NORTH);
-        cardHost.setOpaque(false);
-        contentPanel.add(cardHost, BorderLayout.CENTER);
-
-        getContentPane().removeAll();
-        getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(sidebarPanel, BorderLayout.WEST);
-        getContentPane().add(contentPanel, BorderLayout.CENTER);
-    }
-
-    private void sizeMenuButton(JButton b) {
-        b.setAlignmentX(Component.LEFT_ALIGNMENT);
-        b.setMaximumSize(new Dimension(Integer.MAX_VALUE, 42));
-        b.setPreferredSize(new Dimension(188, 42));
-        b.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
     }
 
     /** Creates a screen the first time it is opened, then refreshes its data every time. */
@@ -245,16 +98,162 @@ public class DashboardFrame extends javax.swing.JFrame {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        sidebarPanel = new javax.swing.JPanel();
+        logoLabel = new javax.swing.JLabel();
+        dashboardButton = new javax.swing.JButton();
+        productsButton = new javax.swing.JButton();
+        categoriesButton = new javax.swing.JButton();
+        suppliersButton = new javax.swing.JButton();
+        customersButton = new javax.swing.JButton();
+        inventoryButton = new javax.swing.JButton();
+        salesButton = new javax.swing.JButton();
+        transactionsButton = new javax.swing.JButton();
+        reportsButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        contentPanel = new javax.swing.JPanel();
+        dashboardTitleLabel = new javax.swing.JLabel();
+        cardHost = new javax.swing.JPanel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        sidebarPanel.setBackground(new java.awt.Color(23, 43, 77));
+        sidebarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        logoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        logoLabel.setText("<html>Retail Store<br>Management</html>");
+
+        sidebarPanel.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 25, 170, 60));
+        dashboardButton.setBackground(new java.awt.Color(23, 43, 77));
+        dashboardButton.setForeground(new java.awt.Color(255, 255, 255));
+        dashboardButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        dashboardButton.setText("   Dashboard");
+        dashboardButton.setHorizontalAlignment(2);
+        dashboardButton.setBorderPainted(false);
+        dashboardButton.setFocusPainted(false);
+
+        sidebarPanel.add(dashboardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, 180, 42));
+        productsButton.setBackground(new java.awt.Color(23, 43, 77));
+        productsButton.setForeground(new java.awt.Color(255, 255, 255));
+        productsButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        productsButton.setText("   Products");
+        productsButton.setHorizontalAlignment(2);
+        productsButton.setBorderPainted(false);
+        productsButton.setFocusPainted(false);
+
+        sidebarPanel.add(productsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 157, 180, 42));
+        categoriesButton.setBackground(new java.awt.Color(23, 43, 77));
+        categoriesButton.setForeground(new java.awt.Color(255, 255, 255));
+        categoriesButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        categoriesButton.setText("   Categories");
+        categoriesButton.setHorizontalAlignment(2);
+        categoriesButton.setBorderPainted(false);
+        categoriesButton.setFocusPainted(false);
+
+        sidebarPanel.add(categoriesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 209, 180, 42));
+        suppliersButton.setBackground(new java.awt.Color(23, 43, 77));
+        suppliersButton.setForeground(new java.awt.Color(255, 255, 255));
+        suppliersButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        suppliersButton.setText("   Suppliers");
+        suppliersButton.setHorizontalAlignment(2);
+        suppliersButton.setBorderPainted(false);
+        suppliersButton.setFocusPainted(false);
+
+        sidebarPanel.add(suppliersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 261, 180, 42));
+        customersButton.setBackground(new java.awt.Color(23, 43, 77));
+        customersButton.setForeground(new java.awt.Color(255, 255, 255));
+        customersButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        customersButton.setText("   Customers");
+        customersButton.setHorizontalAlignment(2);
+        customersButton.setBorderPainted(false);
+        customersButton.setFocusPainted(false);
+
+        sidebarPanel.add(customersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 313, 180, 42));
+        inventoryButton.setBackground(new java.awt.Color(23, 43, 77));
+        inventoryButton.setForeground(new java.awt.Color(255, 255, 255));
+        inventoryButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        inventoryButton.setText("   Inventory");
+        inventoryButton.setHorizontalAlignment(2);
+        inventoryButton.setBorderPainted(false);
+        inventoryButton.setFocusPainted(false);
+
+        sidebarPanel.add(inventoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 365, 180, 42));
+        salesButton.setBackground(new java.awt.Color(23, 43, 77));
+        salesButton.setForeground(new java.awt.Color(255, 255, 255));
+        salesButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        salesButton.setText("   Sales");
+        salesButton.setHorizontalAlignment(2);
+        salesButton.setBorderPainted(false);
+        salesButton.setFocusPainted(false);
+
+        sidebarPanel.add(salesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 417, 180, 42));
+        transactionsButton.setBackground(new java.awt.Color(23, 43, 77));
+        transactionsButton.setForeground(new java.awt.Color(255, 255, 255));
+        transactionsButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        transactionsButton.setText("   Transactions");
+        transactionsButton.setHorizontalAlignment(2);
+        transactionsButton.setBorderPainted(false);
+        transactionsButton.setFocusPainted(false);
+
+        sidebarPanel.add(transactionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 469, 180, 42));
+        reportsButton.setBackground(new java.awt.Color(23, 43, 77));
+        reportsButton.setForeground(new java.awt.Color(255, 255, 255));
+        reportsButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        reportsButton.setText("   Reports");
+        reportsButton.setHorizontalAlignment(2);
+        reportsButton.setBorderPainted(false);
+        reportsButton.setFocusPainted(false);
+
+        sidebarPanel.add(reportsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 521, 180, 42));
+        logoutButton.setBackground(new java.awt.Color(23, 43, 77));
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        logoutButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        logoutButton.setText("   Logout");
+        logoutButton.setHorizontalAlignment(2);
+        logoutButton.setBorderPainted(false);
+        logoutButton.setFocusPainted(false);
+
+        sidebarPanel.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 650, 180, 42));
+
+        getContentPane().add(sidebarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 720));
+
+        contentPanel.setBackground(new java.awt.Color(243, 245, 249));
+        contentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dashboardTitleLabel.setForeground(new java.awt.Color(23, 43, 77));
+        dashboardTitleLabel.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
+        dashboardTitleLabel.setText("Dashboard");
+
+        contentPanel.add(dashboardTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 22, 600, 44));
+        cardHost.setOpaque(false);
+        cardHost.setLayout(new java.awt.CardLayout());
+
+        contentPanel.add(cardHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 900, 600));
+
+        getContentPane().add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 960, 720));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel cardHost;
+    private javax.swing.JButton categoriesButton;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JButton customersButton;
     private javax.swing.JButton dashboardButton;
     private javax.swing.JLabel dashboardTitleLabel;
     private javax.swing.JButton inventoryButton;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton productsButton;
+    private javax.swing.JButton reportsButton;
     private javax.swing.JButton salesButton;
     private javax.swing.JPanel sidebarPanel;
+    private javax.swing.JButton suppliersButton;
     private javax.swing.JButton transactionsButton;
     // End of variables declaration//GEN-END:variables
 
