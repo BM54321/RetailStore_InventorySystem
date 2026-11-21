@@ -1,9 +1,22 @@
 package inventorysystem;
 
+import inventorysystem.ui.DashboardPanel;
+import inventorysystem.ui.PlaceholderPanel;
+import inventorysystem.ui.Refreshable;
+import inventorysystem.ui.Theme;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -12,13 +25,27 @@ public class DashboardFrame extends javax.swing.JFrame {
     private static final Color NAVY = new Color(23, 43, 77);
     private static final Color CONTENT_BG = new Color(243, 245, 249);
 
+    private static final Color ACTIVE = Theme.TEAL;
+
+    private final CardLayout cards = new CardLayout();
+    private final JPanel cardHost = new JPanel(cards);
+    private final Map<String, JButton> menu = new LinkedHashMap<>();
+    private final Map<String, Component> screens = new LinkedHashMap<>();
+    private JButton categoriesButton;
+    private JButton suppliersButton;
+    private JButton customersButton;
+    private JButton reportsButton;
+
     public DashboardFrame() {
         initComponents();
-        setTitle("RSIS | Dashboard");
+        setTitle("RMS | Retail Store Management System");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 650);
+        buildLayout();
+        setMinimumSize(new Dimension(1000, 620));
+        setSize(1200, 720);
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
+        showScreen("Dashboard");
     }
 
     @SuppressWarnings("unchecked")
@@ -114,6 +141,108 @@ public class DashboardFrame extends javax.swing.JFrame {
         button.setFocusPainted(false);
         button.setBorderPainted(false);
         button.setOpaque(true);
+    }
+
+    /**
+     * Rebuilds the window with a resizable layout (sidebar + screens).
+     * Done in code after initComponents() so the NetBeans designer code is untouched.
+     */
+    private void buildLayout() {
+        categoriesButton = new JButton();
+        suppliersButton = new JButton();
+        customersButton = new JButton();
+        reportsButton = new JButton();
+
+        menu.put("Dashboard", dashboardButton);
+        menu.put("Products", productsButton);
+        menu.put("Categories", categoriesButton);
+        menu.put("Suppliers", suppliersButton);
+        menu.put("Customers", customersButton);
+        menu.put("Inventory", inventoryButton);
+        menu.put("Sales", salesButton);
+        menu.put("Transactions", transactionsButton);
+        menu.put("Reports", reportsButton);
+
+        sidebarPanel.removeAll();
+        sidebarPanel.setLayout(new BoxLayout(sidebarPanel, BoxLayout.Y_AXIS));
+        sidebarPanel.setBorder(BorderFactory.createEmptyBorder(22, 16, 18, 16));
+        sidebarPanel.setPreferredSize(new Dimension(220, 0));
+
+        logoLabel.setText("<html>Retail Store<br>Management</html>");
+        logoLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        sidebarPanel.add(logoLabel);
+        sidebarPanel.add(javax.swing.Box.createVerticalStrut(24));
+
+        for (Map.Entry<String, JButton> e : menu.entrySet()) {
+            final String name = e.getKey();
+            JButton b = e.getValue();
+            styleMenuButton(b, name);
+            sizeMenuButton(b);
+            b.addActionListener(evt -> showScreen(name));
+            sidebarPanel.add(b);
+            sidebarPanel.add(javax.swing.Box.createVerticalStrut(6));
+        }
+
+        sidebarPanel.add(javax.swing.Box.createVerticalGlue());
+        styleMenuButton(logoutButton, "Logout");
+        sizeMenuButton(logoutButton);
+        logoutButton.addActionListener(evt -> logout());
+        sidebarPanel.add(logoutButton);
+
+        contentPanel.removeAll();
+        contentPanel.setLayout(new BorderLayout(0, 14));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(22, 26, 22, 26));
+        contentPanel.add(dashboardTitleLabel, BorderLayout.NORTH);
+        cardHost.setOpaque(false);
+        contentPanel.add(cardHost, BorderLayout.CENTER);
+
+        getContentPane().removeAll();
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(sidebarPanel, BorderLayout.WEST);
+        getContentPane().add(contentPanel, BorderLayout.CENTER);
+    }
+
+    private void sizeMenuButton(JButton b) {
+        b.setAlignmentX(Component.LEFT_ALIGNMENT);
+        b.setMaximumSize(new Dimension(Integer.MAX_VALUE, 42));
+        b.setPreferredSize(new Dimension(188, 42));
+        b.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+    }
+
+    /** Creates a screen the first time it is opened, then refreshes its data every time. */
+    private void showScreen(String name) {
+        Component screen = screens.get(name);
+        if (screen == null) {
+            screen = createScreen(name);
+            screens.put(name, screen);
+            cardHost.add(screen, name);
+        }
+        dashboardTitleLabel.setText(name);
+        cards.show(cardHost, name);
+        for (Map.Entry<String, JButton> e : menu.entrySet()) {
+            e.getValue().setBackground(e.getKey().equals(name) ? ACTIVE : NAVY);
+        }
+        if (screen instanceof Refreshable) {
+            ((Refreshable) screen).refresh();
+        }
+    }
+
+    private Component createScreen(String name) {
+        switch (name) {
+            case "Dashboard":
+                return new DashboardPanel();
+            default:
+                return new PlaceholderPanel(name);   // replaced as each module is built
+        }
+    }
+
+    private void logout() {
+        int choice = JOptionPane.showConfirmDialog(this, "Log out of the system?", "Logout",
+                JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_OPTION) {
+            dispose();
+            new MainFrame().setVisible(true);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

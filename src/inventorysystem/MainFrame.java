@@ -18,7 +18,10 @@ public class MainFrame extends JFrame {
     public MainFrame()
     {
         initComponents();
-        setTitle("RSIS | Login");
+        setTitle("RMS | Login");
+        brandLabel.setText("RMS");
+        subtitleLabel.setText("Sign in to your store account");
+        footerLabel.setText("Retail Store Management System");
         setLocationRelativeTo(null);
     }
 
@@ -26,7 +29,7 @@ public class MainFrame extends JFrame {
     {
         String username = usernameField.getText().trim();
         String password = new String(passwordField.getPassword());
-        if (username.equals("admin") && password.equals("admin123"))
+        if (new AuthService().authenticate(username, password))
         {
             DashboardFrame dashboard = new DashboardFrame();
             dashboard.setVisible(true);
