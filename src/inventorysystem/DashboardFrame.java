@@ -3,6 +3,7 @@ package inventorysystem;
 import inventorysystem.ui.DashboardPanel;
 import inventorysystem.ui.PlaceholderPanel;
 import inventorysystem.ui.Refreshable;
+import inventorysystem.ui.SalesPanel;
 import inventorysystem.ui.Theme;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -84,6 +85,8 @@ public class DashboardFrame extends javax.swing.JFrame {
         switch (name) {
             case "Dashboard":
                 return new DashboardPanel();
+            case "Sales":
+                return new SalesPanel();
             default:
                 return new PlaceholderPanel(name);   // replaced as each module is built
         }
