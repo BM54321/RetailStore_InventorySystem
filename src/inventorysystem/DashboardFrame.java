@@ -8,6 +8,7 @@ import inventorysystem.ui.Refreshable;
 import inventorysystem.ui.SalesPanel;
 import inventorysystem.ui.SuppliersPanel;
 import inventorysystem.ui.Theme;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -48,15 +49,30 @@ public class DashboardFrame extends javax.swing.JFrame {
     }
 
     /**
-     * Lets the window be maximized (full screen). The designed screen keeps its
-     * size and stays centered on a plain background, so nothing gets stretched.
+     * Lets the window be maximized (full screen). The blue sidebar is pinned to
+     * the left edge at full height; the designed content area keeps its size and
+     * stays centered in the remaining space, so nothing gets stretched.
      */
     private void makeMaximizable() {
         Container designed = getContentPane();
         Dimension size = designed.getPreferredSize();
-        JPanel stage = new JPanel(new GridBagLayout());
+        Dimension sidebarSize = new Dimension(220, 720);
+        Dimension contentSize = new Dimension(960, 720);
+
+        designed.remove(sidebarPanel);
+        designed.remove(contentPanel);
+        sidebarPanel.setPreferredSize(sidebarSize);
+        contentPanel.setPreferredSize(contentSize);
+
+        JPanel middle = new JPanel(new GridBagLayout());
+        middle.setBackground(Theme.PAGE_BG);
+        middle.add(contentPanel);
+
+        JPanel stage = new JPanel(new BorderLayout());
         stage.setBackground(Theme.PAGE_BG);
-        stage.add(designed);
+        stage.add(sidebarPanel, BorderLayout.WEST);
+        stage.add(middle, BorderLayout.CENTER);
+
         setContentPane(stage);
         setResizable(true);
         setMinimumSize(new Dimension(size.width + 16, size.height + 39));
