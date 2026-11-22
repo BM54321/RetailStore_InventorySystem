@@ -85,6 +85,16 @@ public final class Theme {
         });
     }
 
+    /** A table model whose cells cannot be edited by typing in the table. */
+    public static javax.swing.table.DefaultTableModel readOnlyModel(String... columns) {
+        return new javax.swing.table.DefaultTableModel(columns, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+    }
+
     /** Sets the preferred width of each column (extra space is shared in proportion). */
     public static void columnWidths(JTable table, int... widths) {
         for (int i = 0; i < widths.length; i++) {

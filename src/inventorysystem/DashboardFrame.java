@@ -1,9 +1,12 @@
 package inventorysystem;
 
+import inventorysystem.ui.CategoriesPanel;
 import inventorysystem.ui.DashboardPanel;
 import inventorysystem.ui.PlaceholderPanel;
+import inventorysystem.ui.ProductsPanel;
 import inventorysystem.ui.Refreshable;
 import inventorysystem.ui.SalesPanel;
+import inventorysystem.ui.SuppliersPanel;
 import inventorysystem.ui.Theme;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -85,6 +88,12 @@ public class DashboardFrame extends javax.swing.JFrame {
         switch (name) {
             case "Dashboard":
                 return new DashboardPanel();
+            case "Products":
+                return new ProductsPanel();
+            case "Categories":
+                return new CategoriesPanel();
+            case "Suppliers":
+                return new SuppliersPanel();
             case "Sales":
                 return new SalesPanel();
             default:
