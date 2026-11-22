@@ -11,11 +11,15 @@ import inventorysystem.ui.Theme;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * Main window: sidebar menu on the left, the selected screen on the right.
@@ -37,9 +41,26 @@ public class DashboardFrame extends javax.swing.JFrame {
         setTitle("RMS | Retail Store Management System");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        makeMaximizable();
         cards = (CardLayout) cardHost.getLayout();
         buildMenu();
         showScreen("Dashboard");
+    }
+
+    /**
+     * Lets the window be maximized (full screen). The designed screen keeps its
+     * size and stays centered on a plain background, so nothing gets stretched.
+     */
+    private void makeMaximizable() {
+        Container designed = getContentPane();
+        Dimension size = designed.getPreferredSize();
+        JPanel stage = new JPanel(new GridBagLayout());
+        stage.setBackground(Theme.PAGE_BG);
+        stage.add(designed);
+        setContentPane(stage);
+        setResizable(true);
+        setMinimumSize(new Dimension(size.width + 16, size.height + 39));
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /** Connects each sidebar button to its screen name. */
