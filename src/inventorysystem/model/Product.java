@@ -37,6 +37,18 @@ public class Product {
     public int getMinStockLevel() { return minStockLevel; }
     public void setMinStockLevel(int minStockLevel) { this.minStockLevel = minStockLevel; }
 
+    /**
+     * Changes the stock by the given amount (negative = sold, positive = restocked).
+     * Refuses to let the stock go below zero.
+     */
+    public void updateStock(int change) {
+        int newQuantity = stockQuantity + change;
+        if (newQuantity < 0) {
+            throw new IllegalArgumentException("Not enough stock: only " + stockQuantity + " left.");
+        }
+        stockQuantity = newQuantity;
+    }
+
     public boolean isLowStock() { return stockQuantity <= minStockLevel; }
 
     /** OUT, LOW or OK - used by the Inventory screen. */

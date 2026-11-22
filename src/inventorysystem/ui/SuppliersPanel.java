@@ -1,6 +1,7 @@
 package inventorysystem.ui;
 
 import inventorysystem.dao.SupplierDAO;
+import inventorysystem.model.Person;
 import inventorysystem.model.Supplier;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Suppliers screen: search the supplier list and add, update or delete suppliers.
+ * "View Details" shows the supplier through a Person reference (polymorphism).
  * The layout is built with the NetBeans GUI builder (Design tab); this file holds the logic.
  */
 public class SuppliersPanel extends javax.swing.JPanel implements Refreshable {
@@ -151,6 +153,16 @@ public class SuppliersPanel extends javax.swing.JPanel implements Refreshable {
         }
     }
 
+    /** POLYMORPHISM: the supplier is used as a Person, and displayInfo() runs Supplier's own version. */
+    private void showDetails() {
+        int row = supplierTable.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        Person person = shown.get(supplierTable.convertRowIndexToModel(row));
+        JOptionPane.showMessageDialog(this, person.displayInfo(), "Supplier details", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     private void styleScreen() {
         setOpaque(false);
         Theme.styleTable(supplierTable);
@@ -174,12 +186,14 @@ public class SuppliersPanel extends javax.swing.JPanel implements Refreshable {
         updateButton.addActionListener(e -> update());
         deleteButton.addActionListener(e -> delete());
         clearButton.addActionListener(e -> clearForm());
+        detailsButton.addActionListener(e -> showDetails());
         setEditing(false);
     }
 
     /** While a row is selected you can only Update or Delete it; press Clear / New to add another. */
     private void setEditing(boolean editing) {
         addButton.setEnabled(!editing);
+        detailsButton.setEnabled(editing);
         updateButton.setEnabled(editing);
         deleteButton.setEnabled(editing);
     }
@@ -223,6 +237,7 @@ public class SuppliersPanel extends javax.swing.JPanel implements Refreshable {
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
+        detailsButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -314,6 +329,10 @@ public class SuppliersPanel extends javax.swing.JPanel implements Refreshable {
         clearButton.setText("Clear / New");
 
         formCard.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 410, 142, 36));
+        detailsButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        detailsButton.setText("View Details");
+
+        formCard.add(detailsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 454, 292, 36));
 
         this.add(formCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 0, 324, 600));
 
@@ -329,6 +348,7 @@ public class SuppliersPanel extends javax.swing.JPanel implements Refreshable {
     private javax.swing.JTextField contactField;
     private javax.swing.JLabel contactFieldLabel;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JButton detailsButton;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailFieldLabel;
     private javax.swing.JPanel formCard;

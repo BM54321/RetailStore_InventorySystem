@@ -14,7 +14,14 @@ public class Supplier extends Person {
     public void setCompanyName(String companyName) { this.companyName = companyName; }
 
     @Override
-    public String getRole() { return "Supplier"; }
+    public String displayInfo() {
+        return "Supplier #" + getId() + "\n"
+                + "Company: " + companyName + "\n"
+                + "Contact person: " + getName() + "\n"
+                + "Phone: " + orDash(getPhone()) + "\n"
+                + "Email: " + orDash(getEmail()) + "\n"
+                + "Address: " + orDash(getAddress());
+    }
 
     /** Overrides Person.toString so combo boxes show the company name. */
     @Override

@@ -33,8 +33,16 @@ public abstract class Person {
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
 
-    /** Each subclass says what kind of person it is (polymorphism). */
-    public abstract String getRole();
+    /**
+     * Each subclass builds its own description (POLYMORPHISM): calling
+     * displayInfo() on a Person reference runs the Customer or Supplier version.
+     */
+    public abstract String displayInfo();
+
+    /** Helper for subclasses: shows "-" for an empty optional value. */
+    protected static String orDash(String value) {
+        return value == null || value.trim().isEmpty() ? "-" : value;
+    }
 
     @Override
     public String toString() {

@@ -16,5 +16,12 @@ public class Customer extends Person {
     public void setRegisteredDate(LocalDate registeredDate) { this.registeredDate = registeredDate; }
 
     @Override
-    public String getRole() { return "Customer"; }
+    public String displayInfo() {
+        return "Customer #" + getId() + "\n"
+                + "Name: " + getName() + "\n"
+                + "Phone: " + orDash(getPhone()) + "\n"
+                + "Email: " + orDash(getEmail()) + "\n"
+                + "Address: " + orDash(getAddress()) + "\n"
+                + "Registered: " + (registeredDate == null ? "-" : registeredDate);
+    }
 }

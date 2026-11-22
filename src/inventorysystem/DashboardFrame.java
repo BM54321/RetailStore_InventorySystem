@@ -1,6 +1,7 @@
 package inventorysystem;
 
 import inventorysystem.ui.CategoriesPanel;
+import inventorysystem.ui.CustomersPanel;
 import inventorysystem.ui.DashboardPanel;
 import inventorysystem.ui.PlaceholderPanel;
 import inventorysystem.ui.ProductsPanel;
@@ -131,6 +132,8 @@ public class DashboardFrame extends javax.swing.JFrame {
                 return new CategoriesPanel();
             case "Suppliers":
                 return new SuppliersPanel();
+            case "Customers":
+                return new CustomersPanel();
             case "Sales":
                 return new SalesPanel();
             default:
