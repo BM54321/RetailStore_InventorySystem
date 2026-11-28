@@ -198,7 +198,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         productsButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         productsButton.setBorderPainted(false);
         productsButton.setFocusPainted(false);
-        sidebarPanel.add(productsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 157, 180, 42));
+        sidebarPanel.add(productsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 261, 180, 42));
 
         categoriesButton.setBackground(new java.awt.Color(23, 43, 77));
         categoriesButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -207,7 +207,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         categoriesButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         categoriesButton.setBorderPainted(false);
         categoriesButton.setFocusPainted(false);
-        sidebarPanel.add(categoriesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 209, 180, 42));
+        sidebarPanel.add(categoriesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 313, 180, 42));
 
         suppliersButton.setBackground(new java.awt.Color(23, 43, 77));
         suppliersButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -216,7 +216,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         suppliersButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         suppliersButton.setBorderPainted(false);
         suppliersButton.setFocusPainted(false);
-        sidebarPanel.add(suppliersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 261, 180, 42));
+        sidebarPanel.add(suppliersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 469, 180, 42));
 
         customersButton.setBackground(new java.awt.Color(23, 43, 77));
         customersButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -225,7 +225,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         customersButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         customersButton.setBorderPainted(false);
         customersButton.setFocusPainted(false);
-        sidebarPanel.add(customersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 313, 180, 42));
+        sidebarPanel.add(customersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 417, 180, 42));
 
         inventoryButton.setBackground(new java.awt.Color(23, 43, 77));
         inventoryButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -243,7 +243,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         salesButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         salesButton.setBorderPainted(false);
         salesButton.setFocusPainted(false);
-        sidebarPanel.add(salesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 417, 180, 42));
+        sidebarPanel.add(salesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 157, 180, 42));
 
         transactionsButton.setBackground(new java.awt.Color(23, 43, 77));
         transactionsButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -252,7 +252,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         transactionsButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         transactionsButton.setBorderPainted(false);
         transactionsButton.setFocusPainted(false);
-        sidebarPanel.add(transactionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 469, 180, 42));
+        sidebarPanel.add(transactionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 209, 180, 42));
 
         reportsButton.setBackground(new java.awt.Color(23, 43, 77));
         reportsButton.setForeground(new java.awt.Color(255, 255, 255));
