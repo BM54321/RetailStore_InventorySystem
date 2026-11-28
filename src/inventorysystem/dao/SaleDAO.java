@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -104,5 +105,56 @@ public class SaleDAO extends BaseDAO {
             ps.setBigDecimal(4, price);
             ps.executeUpdate();
         }
+    }
+
+    /**
+     * Sales history for the Transactions screen, newest first.
+     * Each row: sale number, date/time, customer name, items, total.
+     * The keyword matches the sale number or the customer name.
+     */
+    public List<Object[]> findSales(String keyword, Period period) throws SQLException {
+        String sql = "SELECT v.sale_id, v.sale_date, COALESCE(c.name, 'Walk-in'), v.total_items, v.total_amount "
+                + "FROM v_sale_totals v LEFT JOIN customers c ON c.customer_id = v.customer_id "
+                + "WHERE (CAST(v.sale_id AS CHAR) LIKE ? OR COALESCE(c.name, 'Walk-in') LIKE ?) "
+                + "AND " + period.clause("v.sale_date") + " "
+                + "ORDER BY v.sale_date DESC, v.sale_id DESC";
+        List<Object[]> rows = new ArrayList<>();
+        try (Connection c = connect(); PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, like(keyword));
+            ps.setString(2, like(keyword));
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Timestamp when = rs.getTimestamp(2);
+                    rows.add(new Object[] {
+                        rs.getInt(1),
+                        when == null ? null : when.toLocalDateTime(),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getBigDecimal(5)
+                    });
+                }
+            }
+        }
+        return rows;
+    }
+
+    /** The items of one sale. Each row: product code, product name, quantity, unit price, subtotal. */
+    public List<Object[]> getItems(int saleId) throws SQLException {
+        String sql = "SELECT p.product_code, p.product_name, d.quantity, d.unit_price, d.quantity * d.unit_price "
+                + "FROM sale_details d JOIN products p ON p.product_id = d.product_id "
+                + "WHERE d.sale_id = ? ORDER BY p.product_name";
+        List<Object[]> rows = new ArrayList<>();
+        try (Connection c = connect(); PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setInt(1, saleId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    rows.add(new Object[] {
+                        rs.getString(1), rs.getString(2), rs.getInt(3),
+                        rs.getBigDecimal(4), rs.getBigDecimal(5)
+                    });
+                }
+            }
+        }
+        return rows;
     }
 }

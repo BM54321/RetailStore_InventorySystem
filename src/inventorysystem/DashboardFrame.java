@@ -3,11 +3,14 @@ package inventorysystem;
 import inventorysystem.ui.CategoriesPanel;
 import inventorysystem.ui.CustomersPanel;
 import inventorysystem.ui.DashboardPanel;
+import inventorysystem.ui.InventoryPanel;
 import inventorysystem.ui.PlaceholderPanel;
 import inventorysystem.ui.ProductsPanel;
 import inventorysystem.ui.Refreshable;
+import inventorysystem.ui.ReportsPanel;
 import inventorysystem.ui.SalesPanel;
 import inventorysystem.ui.SuppliersPanel;
+import inventorysystem.ui.TransactionsPanel;
 import inventorysystem.ui.Theme;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -134,6 +137,12 @@ public class DashboardFrame extends javax.swing.JFrame {
                 return new SuppliersPanel();
             case "Customers":
                 return new CustomersPanel();
+            case "Inventory":
+                return new InventoryPanel();
+            case "Transactions":
+                return new TransactionsPanel();
+            case "Reports":
+                return new ReportsPanel();
             case "Sales":
                 return new SalesPanel();
             default:
